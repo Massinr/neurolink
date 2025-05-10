@@ -2,27 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>NeuroLink</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-white min-h-screen flex items-center justify-center">
-    <div class="max-w-md w-full mx-4">
+    <!-- Fixing Bugs Overlay -->
+    <div class="fixing-bugs-overlay">
+        <div class="fixing-bugs-text">Fixing Bugs</div>
+    </div>
+
+    <div class="max-w-md w-full mx-4 relative">
+        <div id="featuresMenu" class="features-menu hidden absolute -right-64 top-0 bg-white border-2 border-black p-4 shadow-lg z-50">
+            <h3 class="text-lg font-bold mb-2">Features Guide</h3>
+            <ul class="space-y-2">
+                <li class="flex items-center space-x-2">
+                    <span class="text-xl">✍️</span>
+                    <span>Type your message in the text area</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-xl">📧</span>
+                    <span>Add your email address</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-xl">📱</span>
+                    <span>Click + to add phone numbers</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-xl">➖</span>
+                    <span>Click - to remove phone numbers</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-xl">📤</span>
+                    <span>Click Send when ready</span>
+                </li>
+            </ul>
+        </div>
         <form id="contactForm" class="space-y-4">
-            <textarea
-                id="message"
-                class="w-full px-4 py-2 border-2 border-black rounded-none focus:outline-none focus:border-black min-h-[120px] resize-none"
-                placeholder="Type your message..."
-                required
-            ></textarea>
-            <input
-                type="email"
-                id="email"
-                class="w-full px-4 py-2 border-2 border-black rounded-none focus:outline-none focus:border-black"
-                placeholder="Your email..."
-                required
-            />
+            <div class="relative">
+                <textarea
+                    id="message"
+                    class="w-full px-4 py-2 border-2 border-black rounded-none focus:outline-none focus:border-black min-h-[120px] resize-none"
+                    placeholder="Type your message..."
+                    required
+                ></textarea>
+            </div>
+            <div class="relative">
+                <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-2 border-2 border-black rounded-none focus:outline-none focus:border-black"
+                    placeholder="Your email..."
+                    required
+                />
+            </div>
             <div id="phoneContainer" class="space-y-4">
                 <button
                     type="button"
@@ -46,13 +83,70 @@
                 </div>
             </button>
         </form>
-        <div id="successMessage" class="hidden mt-4 text-center text-black relative">
-            <span class="inline-block">Sent</span>
+        <div id="successMessage" class="hidden mt-4 text-center text-green-600 font-medium relative">
+            <span class="inline-block">Message sent successfully</span>
         </div>
-        <div id="errorMessage" class="hidden mt-4 text-center text-black relative">
-            <span class="inline-block">Error</span>
+        <div id="errorMessage" class="hidden mt-4 text-center text-red-600 font-medium relative">
+            <span class="inline-block">Error sending message</span>
         </div>
     </div>
+
+    <!-- Credits Button -->
+    <button
+        id="creditsButton"
+        class="credits-button fixed bottom-4 right-4 px-3 py-1 text-sm border border-black hover:bg-black hover:text-white transition-all duration-200"
+    >
+        Credits
+    </button>
+
+    <!-- Credits Modal -->
+    <div id="creditsModal" class="credits-modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-4 max-w-sm w-full mx-4 relative">
+            <button id="closeCredits" class="absolute top-2 right-2 text-xl hover:text-gray-600">&times;</button>
+            <h2 class="text-lg font-bold mb-3 text-center">Credits</h2>
+            <div class="space-y-3">
+                <div class="text-center mb-4">
+                    <div class="flex items-center justify-center">
+                        <h3 class="text-base font-semibold">International University of Rabat UIR</h3>
+                    </div>
+                </div>
+                <div class="space-y-1 text-sm">
+                    <div class="flex justify-between items-center">
+                        <span>John Doe</span>
+                        <span class="text-gray-600">Project Manager</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span>John Doe</span>
+                        <span class="text-gray-600">UI/UX Designer</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span>John Doe</span>
+                        <span class="text-gray-600">Backend Developer</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span>John Doe</span>
+                        <span class="text-gray-600">Frontend Developer</span>
+                    </div>
+                </div>
+                <div class="mt-4 pt-2 border-t border-black">
+                    <p class="text-center text-sm font-semibold">
+                        Developed by <a href="https://www.instagram.com/massine.x_x/" target="_blank" class="text-black hover:text-gray-600 transition-colors duration-200">@massine.x_x</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Developer Console -->
+    <div class="dev-console">
+        <div class="dev-console-header">
+            <span class="dev-console-title">Developer Console</span>
+            <span class="dev-console-close">&times;</span>
+        </div>
+        <div class="dev-console-output"></div>
+        <input type="password" class="dev-console-input" placeholder="Enter password..." />
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
