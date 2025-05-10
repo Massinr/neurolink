@@ -4,7 +4,7 @@
 })();
 
 // Toggle fixing bugs overlay with Ctrl+Shift+D
-let isOverlayVisible = true;
+let isOverlayVisible = false;
 const fixingBugsOverlay = document.querySelector('.fixing-bugs-overlay');
 
 document.addEventListener('keydown', function(e) {
@@ -22,22 +22,6 @@ document.addEventListener('keydown', function(e) {
         // Log to console for developers
         console.log(`Fixing Bugs overlay ${isOverlayVisible ? 'enabled' : 'disabled'}`);
     }
-});
-
-// Show fixing bugs overlay on page load
-document.addEventListener('DOMContentLoaded', function() {
-    fixingBugsOverlay.classList.add('visible');
-    
-    // Prevent form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        return false;
-    });
-    
-    // Disable all inputs
-    document.querySelectorAll('input, textarea, button').forEach(element => {
-        element.disabled = true;
-    });
 });
 
 // Credits modal handling
