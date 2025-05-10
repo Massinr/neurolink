@@ -5,10 +5,13 @@
 
 // Toggle fixing bugs overlay with Ctrl+Shift+D
 let isOverlayVisible = true;
-const fixingBugsOverlay = document.querySelector('.fixing-bugs-overlay');
+let fixingBugsOverlay;
 
-// Show fixing bugs overlay on page load
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    fixingBugsOverlay = document.querySelector('.fixing-bugs-overlay');
+    
+    // Make overlay visible immediately
     fixingBugsOverlay.classList.add('visible');
     
     // Disable all inputs initially
