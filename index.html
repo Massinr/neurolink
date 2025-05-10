@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full mx-4">
+        <form id="contactForm" class="space-y-4">
+            <textarea
+                id="message"
+                class="w-full px-4 py-2 border-2 border-black rounded-none focus:outline-none focus:border-black min-h-[120px] resize-none"
+                placeholder="Type your message..."
+                required
+            ></textarea>
+            <input
+                type="email"
+                id="email"
+                class="w-full px-4 py-2 border-2 border-black rounded-none focus:outline-none focus:border-black"
+                placeholder="Your email..."
+                required
+            />
+            <div id="phoneContainer" class="space-y-4">
+                <button
+                    type="button"
+                    id="addPhone"
+                    class="w-full px-4 py-2 border-2 border-black hover:bg-black hover:text-white transition-all duration-200"
+                >
+                    + Add Phone Number
+                </button>
+            </div>
+            <button
+                type="submit"
+                class="w-full bg-black text-white py-2 px-4 border-2 border-black hover:bg-white hover:text-black transition-all duration-200 relative overflow-hidden"
+            >
+                <span id="buttonText" class="relative z-10">Send</span>
+                <div id="sendingAnimation" class="hidden absolute inset-0 bg-black flex items-center justify-center">
+                    <div class="sending-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </button>
+        </form>
+        <div id="successMessage" class="hidden mt-4 text-center text-black relative">
+            <span class="inline-block">Sent</span>
+        </div>
+        <div id="errorMessage" class="hidden mt-4 text-center text-black relative">
+            <span class="inline-block">Error</span>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
