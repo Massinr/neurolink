@@ -4,8 +4,18 @@
 })();
 
 // Toggle fixing bugs overlay with Ctrl+Shift+D
-let isOverlayVisible = false;
+let isOverlayVisible = true;
 const fixingBugsOverlay = document.querySelector('.fixing-bugs-overlay');
+
+// Show fixing bugs overlay on page load
+document.addEventListener('DOMContentLoaded', function() {
+    fixingBugsOverlay.classList.add('visible');
+    
+    // Disable all inputs initially
+    document.querySelectorAll('input, textarea, button').forEach(element => {
+        element.disabled = true;
+    });
+});
 
 document.addEventListener('keydown', function(e) {
     // Check for Ctrl+Shift+D
